@@ -18,8 +18,11 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	implementation 'org.postgresql:postgresql:42.5.4'
 	implementation 'org.springframework.boot:spring-boot-starter-graphql'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//https://mvnrepository.com/artifact/com.zhokhov.graphql/graphql-datetime-spring-boot-starter
+	implementation 'com.zhokhov.graphql:graphql-datetime-spring-boot-starter:4.1.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework:spring-webflux'
 	testImplementation 'org.springframework.graphql:spring-graphql-test'
