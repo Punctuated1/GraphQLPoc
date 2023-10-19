@@ -1,0 +1,54 @@
+type Query{
+	claimById(id: ID!): Claim
+	findById(id:ID!):Person
+	findByLastName(lastName: String!): [Person]
+}
+
+type Claim{
+  resourceType: String
+  id : ID
+  use : String
+  personId : Int
+  created : String
+  insurer : String
+  provider : String
+  payeeType : String
+  productCode :  String
+  carrier : String
+  account : String
+  group : String
+  person: Person
+  securityControls: [SecurityControl]
+  securityControlsCount: SecurityControl
+}	
+
+type Person{
+	id: ID
+	lastName: String
+	firstName: String
+	gender: String
+	dateOfBirth: String
+	tsCr: String
+	tsup: String
+	nameUp: String
+  	cag: String
+	
+}
+
+type SecurityControl {
+	
+	id: ID
+	accountId: String
+	carrierId: String
+	clientId: String
+	groupId: String
+	planCode: String
+	
+	cag: String
+	clientCag: String
+	coalitionId: String
+	lineOfBusiness: String
+	securityRole: String
+	securityScope: String
+	securityControlCount: Int	
+}
