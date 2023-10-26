@@ -1,29 +1,50 @@
 package com.pd.graphql.demo;
 
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
-import org.hibernate.jpa.HibernatePersistenceProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.graphql.execution.RuntimeWiringConfigurer;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import graphql.scalars.ExtendedScalars;
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
+import com.mongodb.MongoCredential;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories("com.pd.graphql.demo")
+//@EnableJpaRepositories("com.pd.graphql.jps")
+//@EnableMongoRepositories("com.pd.graphql.demo")
+//@EntityScan("com.pd.graphql.jpa")
+
 public class GraphQLConfig {
 	
 	
+	@Bean
+
+	public MongoClient mongoClient() {
+		ConnectionString connectionString = new ConnectionString ("mongodb://root:example@127.0.0.1:27017/admin");
+		MongoCredential credential = MongoCredential.createCredential("root", "admin", "example".toCharArray());
+		MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
+				.applyConnectionString(connectionString)
+				.build();
+
+		return MongoClients.create(mongoClientSettings);
+	}
+
+	
+
+	@Bean(name = "mongoTemplate")
+	public MongoTemplate mongoTemplate() {
+		return new MongoTemplate(mongoClient(),getDatabaseName());
+	}
+
+	private String getDatabaseName() {
+		return "benchmark";
+	}
+
+	
+
+
 
 //	@Bean
 //	public RuntimeWiringConfigurer runtimeWiringConfigurer() {
