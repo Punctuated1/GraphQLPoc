@@ -1,7 +1,7 @@
 type Query{
 	claimById(id: ID!): Claim
-	findById(id:ID!):Person
-	findByLastName(lastName: String!): [Person]
+	personById(id: ID!):Person
+	personsByLastName(lastName: String!): [Person]
 }
 
 type Claim{

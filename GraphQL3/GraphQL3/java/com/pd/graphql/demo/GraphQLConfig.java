@@ -19,30 +19,30 @@ import com.mongodb.client.MongoClients;
 public class GraphQLConfig {
 	
 	
-	@Bean
-
-	public MongoClient mongoClient() {
-		ConnectionString connectionString = new ConnectionString ("mongodb://root:example@127.0.0.1:27017/admin");
-		MongoCredential credential = MongoCredential.createCredential("root", "admin", "example".toCharArray());
-		MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
-				.applyConnectionString(connectionString)
-				.build();
-
-		return MongoClients.create(mongoClientSettings);
-	}
-
-	
-
-	@Bean(name = "mongoTemplate")
-	public MongoTemplate mongoTemplate() {
-		return new MongoTemplate(mongoClient(),getDatabaseName());
-	}
-
-	private String getDatabaseName() {
-		return "benchmark";
-	}
-
-	
+//	@Bean
+//
+//	public MongoClient mongoClient() {
+//		ConnectionString connectionString = new ConnectionString ("mongodb://root:example@127.0.0.1:27017/admin");
+//		MongoCredential credential = MongoCredential.createCredential("root", "admin", "example".toCharArray());
+//		MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
+//				.applyConnectionString(connectionString)
+//				.build();
+//
+//		return MongoClients.create(mongoClientSettings);
+//	}
+//
+//	
+//
+//	@Bean(name = "mongoTemplate")
+//	public MongoTemplate mongoTemplate() {
+//		return new MongoTemplate(mongoClient(),getDatabaseName());
+//	}
+//
+//	private String getDatabaseName() {
+//		return "benchmark";
+//	}
+//
+//	
 
 
 
