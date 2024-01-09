@@ -1,0 +1,31 @@
+query claimDetail($id: ID){
+  claimById(id: $id) {
+    id
+    insurer
+    provider
+    personId
+    
+    person {
+     id
+     firstName
+     lastName
+      cag
+    }
+    
+    securityControlsCount{
+      securityControlCount
+    }
+    
+    
+    securityControls{
+      cag
+      accountId
+      carrierId
+      groupId
+      clientId
+      planCode
+      securityScope
+      securityRole
+    }
+  }
+}
